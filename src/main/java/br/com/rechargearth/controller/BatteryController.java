@@ -10,46 +10,41 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rechargearth.model.Company;
-import br.com.rechargearth.repositories.ICompanyRepository;
+import br.com.rechargearth.model.Battery;
+import br.com.rechargearth.repositories.IBatteryRepository;
 
-@RestController
-@RequestMapping("company")
-public class CompanyController {
-	
+public class BatteryController {
 	@Autowired
-	private ICompanyRepository companyRepository;
+	private IBatteryRepository batteryRepository;
 	
 	@GetMapping
-	public List<Company> listAllCompany()
+	public List<Battery> listAllBattery()
 	{
-		return companyRepository.findAll();
+		return batteryRepository.findAll();
 	}
 	@GetMapping("{id}")
-	public Company findById(@PathVariable int id) 
+	public Battery findByid(@PathVariable int id)
 	{
-		return companyRepository.findById(id).get();
+		return batteryRepository.findById(id).get();
 	}
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
-	public Company register(@RequestBody Company company) 
+	public Battery register(@RequestBody Battery battery) 
 	{
-		return companyRepository.save(company);
+		return batteryRepository.save(battery);
 	}
 	@PutMapping("{id}")
-	public Company update(@RequestBody Company company, @PathVariable int id) 
+	public Battery update(@RequestBody Battery battery, @PathVariable int id) 
 	{
-		company.setId(id);
-		return companyRepository.save(company);
+		battery.setId(id);
+		return batteryRepository.save(battery);
 	}
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable int id)
 	{
-		companyRepository.deleteById(id);
+		batteryRepository.deleteById(id);
 	}
-		
+	
 }

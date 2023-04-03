@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rechargearth.model.Seller;
-import br.com.rechargearth.model.repositories.ISellerRepository;
+import br.com.rechargearth.repositories.ISellerRepository;
 
 @RestController
 @RequestMapping("seller")
@@ -50,5 +50,5 @@ public class SellerController {
 	{
 		sellerRepository.deleteById(id);
 	}
-		
+	
 }

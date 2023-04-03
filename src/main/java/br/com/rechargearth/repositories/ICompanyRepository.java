@@ -1,4 +1,4 @@
-package br.com.rechargearth.model.repositories;
+package br.com.rechargearth.repositories;
 
 import java.util.List;
 

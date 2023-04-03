@@ -14,42 +14,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rechargearth.model.Company;
-import br.com.rechargearth.repositories.ICompanyRepository;
+import br.com.rechargearth.model.Sale;
+import br.com.rechargearth.repositories.ISaleRepository;
 
 @RestController
-@RequestMapping("company")
-public class CompanyController {
+@RequestMapping("sale")
+public class SaleController {
 	
 	@Autowired
-	private ICompanyRepository companyRepository;
+	private ISaleRepository saleRepository;
 	
 	@GetMapping
-	public List<Company> listAllCompany()
+	public List<Sale> listAllSale()
 	{
-		return companyRepository.findAll();
+		return saleRepository.findAll();
 	}
 	@GetMapping("{id}")
-	public Company findById(@PathVariable int id) 
+	public Sale findById(@PathVariable int id) 
 	{
-		return companyRepository.findById(id).get();
+		return saleRepository.findById(id).get();
 	}
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
-	public Company register(@RequestBody Company company) 
+	public Sale register(@RequestBody Sale sale) 
 	{
-		return companyRepository.save(company);
+		return saleRepository.save(sale);
 	}
 	@PutMapping("{id}")
-	public Company update(@RequestBody Company company, @PathVariable int id) 
+	public Sale update(@RequestBody Sale sale, @PathVariable int id) 
 	{
-		company.setId(id);
-		return companyRepository.save(company);
+		sale.setId(id);
+		return saleRepository.save(sale);
 	}
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable int id)
 	{
-		companyRepository.deleteById(id);
+		saleRepository.deleteById(id);
 	}
-		
+
 }

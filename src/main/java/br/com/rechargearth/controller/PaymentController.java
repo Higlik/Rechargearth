@@ -14,42 +14,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rechargearth.model.Company;
-import br.com.rechargearth.repositories.ICompanyRepository;
+import br.com.rechargearth.model.Payment;
+import br.com.rechargearth.repositories.IPaymentRepository;
 
 @RestController
-@RequestMapping("company")
-public class CompanyController {
-	
+@RequestMapping("payment")
+public class PaymentController {
 	@Autowired
-	private ICompanyRepository companyRepository;
+	private IPaymentRepository paymentRepository;
 	
 	@GetMapping
-	public List<Company> listAllCompany()
+	public List<Payment> listAllPayment()
 	{
-		return companyRepository.findAll();
+		return paymentRepository.findAll();
 	}
 	@GetMapping("{id}")
-	public Company findById(@PathVariable int id) 
+	public Payment findById(@PathVariable int id) 
 	{
-		return companyRepository.findById(id).get();
+		return paymentRepository.findById(id).get();
 	}
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
-	public Company register(@RequestBody Company company) 
+	public Payment register(@RequestBody Payment payment) 
 	{
-		return companyRepository.save(company);
+		return paymentRepository.save(payment);
 	}
 	@PutMapping("{id}")
-	public Company update(@RequestBody Company company, @PathVariable int id) 
+	public Payment update(@RequestBody Payment payment, @PathVariable int id) 
 	{
-		company.setId(id);
-		return companyRepository.save(company);
+		payment.setId(id);
+		return paymentRepository.save(payment);
 	}
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable int id)
 	{
-		companyRepository.deleteById(id);
+		paymentRepository.deleteById(id);
 	}
-		
 }

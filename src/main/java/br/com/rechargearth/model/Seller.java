@@ -13,6 +13,8 @@ public class Seller {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Seller")
 	private int Id;
+	private String Name;
+	private String CPF;
 
 	public int getId() {
 		return Id;
